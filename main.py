@@ -7,7 +7,7 @@ def main():
 
  
     black = (0, 0, 0)
-
+    clock = pygame.time.Clock()
     
     running = True
     while running:
@@ -17,6 +17,7 @@ def main():
             if event.type == pygame.QUIT:
                 return
 
+        dt = clock.tick(60) / 1000.0
 
         
 if __name__ == "__main__":
