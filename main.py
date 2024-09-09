@@ -3,15 +3,17 @@ from constants import *
 
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((SCREEN_HEIGHT, SCREEN_HEIGHT))
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
  
     black = (0, 0, 0)
     clock = pygame.time.Clock()
+    dt = 0
     
     running = True
     while running:
         screen.fill(black)
+        pygame.display.flip()
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
