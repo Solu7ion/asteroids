@@ -28,7 +28,7 @@ def main():
     dt = 0
     
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) 
-    
+    font = pygame.font.Font(None, 36)
     
     while True:
         for event in pygame.event.get():
@@ -40,15 +40,19 @@ def main():
 
         for asteroid in asteroids:
             if asteroid.collides_with(player):
-                print("Game over!")
-                sys.exit()
+                player.lose_life()
+                asteroid.kill()
         
             for shot in shots:
                 if asteroid.collides_with(shot):
                     shot.kill()
                     asteroid.split()
                     
+        
+        lives_text = font.render(f"Lives: {player.lives}", True,"white") 
+        
         screen.fill("black")
+        screen.blit(lives_text, (10,10))
         for obj in drawable:
             obj.draw(screen)
             
